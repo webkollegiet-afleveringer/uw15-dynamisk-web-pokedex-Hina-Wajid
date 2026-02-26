@@ -1,0 +1,28 @@
+.wrapper {
+    border: 1px solid black;
+    /* max-width: 352px; */
+    margin-inline: auto;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.pokemon-list {}
+
+
+
+.pokemon-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.observer {
+    background-color: aqua;
+}
+
+.red {
+    background-color: red;
+}
