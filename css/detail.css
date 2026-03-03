@@ -8,7 +8,7 @@
     max-width: 680px;
 }
 
-.header__pokemon-detail {}
+
 
 .div__header_styling {
     display: flex;
@@ -20,11 +20,6 @@
 .div__header_styling p {
     margin-left: auto;
 }
-
-
-.main__pokemon-detail {}
-
-.aricle__pokemon-detail {}
 
 
 /* ul__abilities */
