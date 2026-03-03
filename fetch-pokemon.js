@@ -21,18 +21,24 @@ function displayPokemon(data) {
         .map((result) => {
             const { name, url } = result;
             const id = getIdFromPokemon(url)
+            const entryNumber = id.padStart(4, "0");
+
+
             return /* html */`
+            <a href='details.html?id=${id}'> 
             <article class ="pokemon-card">
-                <p>#${id}</p>
-                 <a href='details.html?id=${id}'><img src ="${artworkUrl}${id}.png" alt ="${name}">${name}</a>
-                <h2>${name}</h2>
-            </article>
+              <p data-id = ${id} >#${entryNumber}</p>
+              <img src ="${artworkUrl}${id}.png" alt ="${name}">
+              <h2 class ="first_letter_uppercase">${name}</h2>
+              </article>
+              
+              </a>
         `;
         })
         .join('');
 
     mainDom.insertAdjacentHTML("beforeend", pokemonString);
-    let observerPokemon = document.querySelector("main article:nth-last-child(5)");
+    let observerPokemon = document.querySelector("main a:nth-last-child(5)");
     console.log(observerPokemon);
 
     observerPokemon.classList.add("red");

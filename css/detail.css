@@ -1,0 +1,77 @@
+@import url(typography.css);
+@import url(gallery.css);
+
+
+.wrapper-detail {
+    padding: 40px;
+    margin-inline: auto;
+    max-width: 680px;
+}
+
+.header__pokemon-detail {}
+
+.div__header_styling {
+    display: flex;
+    align-items: center;
+
+
+}
+
+.div__header_styling p {
+    margin-left: auto;
+}
+
+
+.main__pokemon-detail {}
+
+.aricle__pokemon-detail {}
+
+
+/* ul__abilities */
+
+.ul__abilities {
+    list-style: none;
+}
+
+.section__about {
+    display: flex;
+}
+
+.flex-display {
+    display: flex;
+}
+
+.about_article {
+
+    background-color: white;
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.pil {
+    height: 40px;
+    width: 40px;
+    border-radius: 1rem;
+    padding-block: 2px;
+    padding-inline: 8px;
+    text-align: center;
+    align-content: center;
+    font-size: 1rem;
+    color: white;
+    font-weight: bold;
+
+}
+
+.pil_wrapper {
+    display: flex;
+    gap: 1rem;
+}
+
+.table__stats {
+    align-self: flex-start;
+    text-align: left;
+    /* width: 100%; */
+}

@@ -1,0 +1,27 @@
+.gallery {
+    text-align: center;
+    aspect-ratio: 2/ 1;
+}
+
+.gallery__content {
+
+    position: absolute;
+}
+
+.main__pokemon-detail {
+    position: relative;
+}
+
+.about_article {
+    padding-top: 200px;
+}
+
+.wrapper-detail {
+    background-image: url("../assets/pokeball.svg");
+    background-repeat: no-repeat;
+    background-size: 300px 300px;
+    background-position: 60% 5%;
+    background-attachment: fixed;
+
+
+}
