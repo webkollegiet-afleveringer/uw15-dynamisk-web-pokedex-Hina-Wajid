@@ -43,12 +43,12 @@ function showPokemonCard(pokemonInfoData) {
             </div>
         </figure>          
 `
-    const listItemsString = /*html*/`<ul> ${pokemonInfoData.types.map((thislink) => `<li>${thislink.type.name}</li>`).join("")}</ul>`
-    console.log(listItemsString);
 
     mainPokemonDetail.insertAdjacentHTML("beforeend", mainString);
 
     // mainPokemonDetail.insertAdjacentHTML("beforeend", aboutString);
+    const listItemsString = /*html*/`<ul> ${pokemonInfoData.types.map((thislink) => `<li>${thislink.type.name}</li>`).join("")}</ul>`
+    console.log(listItemsString);
     console.log(pokemonInfoData.types);
     pokemonInfoData.types.map((element) => {
         `<li>${element.type.name}</li>`

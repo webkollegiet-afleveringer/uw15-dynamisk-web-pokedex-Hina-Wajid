@@ -27,6 +27,7 @@ function displayPokemon(data) {
             return /* html */`
             <a href='details.html?id=${id}'> 
             <article class ="pokemon-card">
+             <div class="grey-bg"></div>
               <p data-id = ${id} >#${entryNumber}</p>
               <img src ="${artworkUrl}${id}.png" alt ="${name}">
               <h2 class ="first_letter_uppercase">${name}</h2>

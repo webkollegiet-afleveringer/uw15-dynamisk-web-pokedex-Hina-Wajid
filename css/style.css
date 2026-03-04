@@ -11,7 +11,7 @@
 main {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 2rem;
+    gap: 1rem;
 
 }
 
@@ -24,15 +24,15 @@ main {
     box-shadow: 0 3px 12px 3px rgba(0, 0, 0, 0.2) inset;
 }
 
-.pokemon-list {}
+
 
 .pokemon-card {
 
     border-radius: 0.5rem;
-    aspect-ratio: 104 / 108;
-    position: relative;
+    aspect-ratio: 2/1;
     padding: 1rem;
     box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.2);
+    position: relative;
 }
 
 .pokemon-card p {
@@ -44,13 +44,14 @@ main {
 }
 
 .pokemon-card img {
-    width: 100%;
+    width: 80%;
     height: auto;
     display: block;
     aspect-ratio: 74/72;
     object-fit: contain;
-
-
+    margin-inline: auto;
+    z-index: 100;
+    position: relative;
 }
 
 .pokemon-card h2 {
@@ -59,7 +60,9 @@ main {
     font-size: 16px;
     padding: 1rem;
     width: 100%;
-    grid-row: 3;
+    z-index: 100;
+    position: relative;
+
 }
 
 .div__background__box {
@@ -80,4 +83,15 @@ main {
 
 .first_letter_uppercase {
     text-transform: capitalize;
+}
+
+.grey-bg {
+    height: 50%;
+    width: 100%;
+    background-color: #EFEFEF;
+    border-radius: 0.5rem;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
 }
