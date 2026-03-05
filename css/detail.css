@@ -6,7 +6,7 @@
     padding: 40px;
     margin-inline: auto;
     max-width: 680px;
-    text-transform: capitalize;
+
 }
 
 /* Header */
@@ -54,9 +54,6 @@
 }
 
 /* section 1 inside article with about heading */
-.section__about {}
-
-.section__inside_about {}
 
 .card_inside {
     padding: 1.25rem;
@@ -84,15 +81,28 @@
     transform: rotate(90deg);
 }
 
+
+.about_text {
+    padding: 1rem;
+}
+
 /* ul__abilities */
 
 .ul__abilities {
     list-style: none;
+    text-transform: capitalize;
+    text-align: left;
 }
 
 /* table ---section with base stats */
-.table__stats {
-    align-self: flex-start;
-    text-align: left;
+.section__stats {
+    align-items: flex-start;
+
+
     /* width: 100%; */
+}
+
+.table__stats {
+    text-align: left;
+    width: 100%;
 }

@@ -9,14 +9,43 @@ const mainPokemonDetail = document.querySelector("#main__pokemon-detail");
 let species = "hej";
 
 /* async function getData() {
-  const [users, posts] = await Promise.all([
-    fetch("/users").then(r => r.json()),
-    fetch("/posts").then(r => r.json())
-  ]);
- 
-  console.log(users, posts);
-} */
-const url = `https://pokeapi.co/api/v2/pokemon/${id}/`;
+    const [users, posts] = await Promise.all([
+        fetch("/users").then(r => r.json()),
+        fetch("/posts").then(r => r.json())
+        ]);
+        
+        console.log(users, posts);
+        } */
+
+async function getData() {
+    const [species, data] = await Promise.all([
+        fetch(`https://pokeapi.co/api/v2/pokemon-species/${id}/`).then(r => r.json()),
+        fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`).then(response => response.json())
+    ]);
+    showPokemonCard(species, data);
+
+}
+
+/* fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`)
+    .then((respons) => respons.json())
+    .then((data) => {
+        console.log(data.species.url);
+        fetch(data.species.url)
+            .then((respons) => respons.json())
+            .then((data) => {
+
+                species = data.flavor_text_entries.reduce((accumulator, currentValue) => {
+                    console.log(currentValue.language.name);
+
+
+                    if (currentValue.language.name == 'en') {
+                        return accumulator + currentValue.flavor_text;
+                    }
+                }, "")
+            })
+        showPokemonCard(data);
+    }) */
+/* const url = `https://pokeapi.co/api/v2/pokemon/${id}/`;
 fetch(url)
     .then((respons) => respons.json())
     .then((data) => {
@@ -36,12 +65,12 @@ fetch(url)
             })
         showPokemonCard(data);
     })
+ */
 
 
 
 
-
-function showPokemonCard(pokemonInfoData) {
+function showPokemonCard(species, pokemonInfoData) {
     const { weight } = pokemonInfoData;
 
     const urlimage = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`
@@ -72,19 +101,16 @@ function showPokemonCard(pokemonInfoData) {
 `
     mainPokemonDetail.insertAdjacentHTML("beforeend", mainString);
 
-    // mainPokemonDetail.insertAdjacentHTML("beforeend", aboutString);
-    const listItemsString = /*html*/`<ul> ${pokemonInfoData.types.map((thistype) => `<li>${thistype.type.name}</li>`).join("")}</ul>`
-    console.log(listItemsString);
-    console.log(pokemonInfoData.types);
-    pokemonInfoData.types.map((element) => {
-        `<li>${element.type.name}</li>`
-    })
-    /*  <div class ="pil_wrapper">
-               <p class ="pil background-${pokemonInfoData.types[0].type.name}">${pokemonInfoData.types[0].type.name}</p>
-               <p class ="pil background-${pokemonInfoData.types[1].type.name}">${pokemonInfoData.types[1].type.name}</p>
-            </div> */
-    const aboutInfoString = /*html*/`
+    /* ABOUT ARTCILE */
+    /* varibale that cleans the string for about */
+    const cleaned = species.flavor_text_entries[9].flavor_text
+        .replace(/[^\p{L}\p{N}.,\s]/gu, '')  // keep letters (incl. é), numbers, . , spaces
+        .replace(/\s+/g, ' ')               // normalize whitespace
+        .trim()
+        .toLowerCase()
+        .replace(/(^\p{L})|(\.\s+\p{L})/gu, match => match.toUpperCase());
 
+    const aboutInfoString = /*html*/`
  <article class ="about_article"> 
         <div class ="pil_wrapper">
             ${pokemonInfoData.types.map((thistype) => `<p class ="pil background-${thistype.type.name}"> ${thistype.type.name}</p>`).join("")}
@@ -119,28 +145,35 @@ function showPokemonCard(pokemonInfoData) {
         </div>
     </section>
     </section>
-    <p class ="margin__top">${species}</p>
-    
-     <section class ="section__stats margin__top"> 
+
+    <p class ="margin__top about_text">${cleaned}</p>
+    <section class ="section__stats margin__top"> 
      <h2 class = "${text_color}">Base Stats</h2>             
-        <table class="table__stats">${pokemonInfoData.stats.map(pokeStats => `<tr><th class ="${text_color}">${pokeStats.stat.name}</th><td><label for="">${pokeStats.base_stat}</label></td><td><progress value="${pokeStats.base_stat}" max="230"></progress></td></tr>`).join(" ")}</table> 
-      </section>    
+        <table class="table__stats">
+        ${pokemonInfoData.stats.map(pokeStats =>
+        `<tr><th class ="${text_color}">${pokeStats.stat.name}</th><td><label for="">${pokeStats.base_stat}</label></td><td><progress value="${pokeStats.base_stat}" max="230"></progress></td></tr>`).join(" ")}</table> 
+      </section>  
+
+      
     </article>
      `
-
     mainPokemonDetail.insertAdjacentHTML("beforeend", aboutInfoString);
     // info
 
     // progress
+    console.log(pokemonInfoData.weight);
 
-
-    console.log(pokemonInfoData.types[0].type.name);
 
     // here progress
 
     /*    <table class="">${pokeDexInfo.stats.map(pokeStats => `<tr><th>${pokeStats.stat.name}</th><td><label for="">${pokeStats.base_stat}</label></td><td><progress value="${pokeStats.base_stat}" max="230"></progress></td></tr>`).join(" ")}</table>
-            </progress> */
+    </progress> */
 
 }
-/* class ="background-${pokemonInfoData.types[0].type.name}" */
+/* class ="background-${pokemonInfoData.types[0].type.name}"
+console.log(pokemonInfoData.types[0].type.name);
+  console.log(pokemonInfoData.types);
+    console.log(cleaned);
+    <p class ="margin__top">${species}</p> */
 
+getData();
