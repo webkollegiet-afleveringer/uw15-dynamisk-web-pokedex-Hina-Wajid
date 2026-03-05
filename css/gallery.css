@@ -6,6 +6,12 @@
 .gallery__content {
 
     position: absolute;
+    display: flex;
+}
+
+.gallery__content img {
+
+    margin: 0 auto;
 }
 
 .main__pokemon-detail {
