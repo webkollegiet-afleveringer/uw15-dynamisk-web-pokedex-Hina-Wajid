@@ -72,11 +72,12 @@ fetch(url)
 
 function showPokemonCard(species, pokemonInfoData) {
     const { weight } = pokemonInfoData;
-
     const urlimage = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`
     const backgroundColorClass = `background-${pokemonInfoData.types[0].type.name}`;
     wrapperDetail.classList.add(backgroundColorClass);
     const text_color = `text_color-${pokemonInfoData.types[0].type.name}`
+
+
     //header 
     const headerString = /* html */`
       <div class = "div__header_styling">
@@ -86,6 +87,7 @@ function showPokemonCard(species, pokemonInfoData) {
     </div>
 `
     headerPokemonDetail.insertAdjacentHTML("afterbegin", headerString);
+
 
     /* Main  */
     /* hero image */
@@ -101,7 +103,8 @@ function showPokemonCard(species, pokemonInfoData) {
 `
     mainPokemonDetail.insertAdjacentHTML("beforeend", mainString);
 
-    /* ABOUT ARTCILE */
+
+
     /* varibale that cleans the string for about */
     const cleaned = species.flavor_text_entries[9].flavor_text
         .replace(/[^\p{L}\p{N}.,\s]/gu, '')  // keep letters (incl. é), numbers, . , spaces
@@ -110,8 +113,21 @@ function showPokemonCard(species, pokemonInfoData) {
         .toLowerCase()
         .replace(/(^\p{L})|(\.\s+\p{L})/gu, match => match.toUpperCase());
 
+    console.log(pokemonInfoData.stats);
+
+    function statsname(name) {
+        if (name == "hp") return "HP"
+        if (name == "attack") return "ATK"
+        if (name == "defense") return "DEF"
+        if (name == "special-attack") return "SATK"
+        if (name == "special-defense") return "SDEF"
+        if (name == "speed") return "SPD"
+        return name;
+    }
+
+    /* ABOUT ARTCILE */
     const aboutInfoString = /*html*/`
- <article class ="about_article"> 
+    <article class ="about_article"> 
         <div class ="pil_wrapper">
             ${pokemonInfoData.types.map((thistype) => `<p class ="pil background-${thistype.type.name}"> ${thistype.type.name}</p>`).join("")}
         </div>
@@ -151,7 +167,10 @@ function showPokemonCard(species, pokemonInfoData) {
      <h2 class = "${text_color}">Base Stats</h2>             
         <table class="table__stats">
         ${pokemonInfoData.stats.map(pokeStats =>
-        `<tr><th class ="${text_color}">${pokeStats.stat.name}</th><td><label for="">${pokeStats.base_stat}</label></td><td><progress value="${pokeStats.base_stat}" max="230"></progress></td></tr>`).join(" ")}</table> 
+
+        `<tr><th class ="${text_color}">${statsname(pokeStats.stat.name)}</th><td><label for="">${pokeStats.base_stat}</label></td><td><div class= "progress_wrapper background-${pokemonInfoData.types[0].type.name}-light"  >
+  <div class= "progress_bar background-${pokemonInfoData.types[0].type.name}" style ="width:${pokeStats.base_stat}px"></div>
+</div></td></tr>`).join(" ")}</table> 
       </section>  
 
       
@@ -161,7 +180,7 @@ function showPokemonCard(species, pokemonInfoData) {
     // info
 
     // progress
-    console.log(pokemonInfoData.weight);
+
 
 
     // here progress
@@ -173,7 +192,11 @@ function showPokemonCard(species, pokemonInfoData) {
 /* class ="background-${pokemonInfoData.types[0].type.name}"
 console.log(pokemonInfoData.types[0].type.name);
   console.log(pokemonInfoData.types);
+
+    console.log(pokeStats.stat.name);
     console.log(cleaned);
+    
+
     <p class ="margin__top">${species}</p> */
 
 getData();
