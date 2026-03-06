@@ -4,6 +4,7 @@
 .wrapper {
     border: 1px solid black;
     margin-inline: auto;
+    /* width: 100%; */
     width: 680px;
     background-color: #DC0A2D;
 }
@@ -44,14 +45,14 @@ main {
 }
 
 .pokemon-card img {
-    width: 80%;
+    /* width: 80%; */
     height: auto;
     display: block;
     aspect-ratio: 74/72;
     object-fit: contain;
     margin-inline: auto;
-    z-index: 100;
     position: relative;
+    z-index: 100;
 }
 
 .pokemon-card h2 {
@@ -60,8 +61,8 @@ main {
     font-size: 16px;
     padding: 1rem;
     width: 100%;
-    z-index: 100;
     position: relative;
+    z-index: 100;
 
 }
 
