@@ -4,6 +4,7 @@
 .wrapper {
     border: 1px solid black;
     margin-inline: auto;
+    /* width: 100%; */
     width: 680px;
     background-color: #DC0A2D;
 }

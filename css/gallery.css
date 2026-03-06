@@ -7,11 +7,16 @@
 
     position: absolute;
     display: flex;
+    justify-content: space-between;
+    width: 100%;
+    top: 40px;
 }
 
 .gallery__content img {
 
     margin: 0 auto;
+    aspect-ratio: 1/1;
+    width: 55.5%;
 }
 
 .main__pokemon-detail {
@@ -19,14 +24,14 @@
 }
 
 .about_article {
-    padding-top: 200px;
+    padding-top: 73px;
 }
 
 .wrapper-detail {
     background-image: url("../assets/pokeball.svg");
     background-repeat: no-repeat;
-    background-size: 300px 300px;
-    background-position: 60% 5%;
+    background-size: 350px 350px;
+    background-position: 60% 4%;
     background-attachment: fixed;
 
 

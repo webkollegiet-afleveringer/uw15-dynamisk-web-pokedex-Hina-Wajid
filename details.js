@@ -7,6 +7,10 @@ const headerPokemonDetail = document.querySelector("#header__pokemon-detail");
 const mainPokemonDetail = document.querySelector("#main__pokemon-detail");
 
 let species = "hej";
+pagenumber = JSON.parse(id);
+
+
+
 
 /* async function getData() {
     const [users, posts] = await Promise.all([
@@ -203,10 +207,10 @@ console.log(pokemonInfoData.types[0].type.name);
 
 getData();
 
-/* onclick = "nextPokemon()" */
+/* /* onclick = "nextPokemon()" */
 /* function nextPokemon() {
 
     let temp = parseInt(id, 10) + 1;
     getData(temp)
 
-} */
+} */ 

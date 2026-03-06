@@ -5,7 +5,9 @@
 .wrapper-detail {
     padding: 40px;
     margin-inline: auto;
-    max-width: 680px;
+    /* width: 100%; */
+    /* width: 360px; */
+    width: 680px;
 
 }
 
