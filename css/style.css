@@ -96,3 +96,19 @@ main {
     left: 0;
     z-index: 1;
 }
+
+@media (max-width: 768px) {
+    .wrapper {
+        width: 100%;
+    }
+
+    main {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    main {
+        grid-template-columns: 1fr;
+    }
+}
