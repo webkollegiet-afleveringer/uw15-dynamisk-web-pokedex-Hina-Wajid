@@ -104,12 +104,12 @@
 }
 
 .table__stats {
-    width: 120%;
+    width: 100%;
 }
 
 .progress_wrapper {
     height: 4px;
-    width: 230px;
+    width: 410px;
     border-radius: 2px;
     overflow: hidden;
 

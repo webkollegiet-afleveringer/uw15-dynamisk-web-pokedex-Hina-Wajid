@@ -18,6 +18,8 @@ let species = "hej";
         } */
 
 async function getData() {
+
+
     const [species, data] = await Promise.all([
         fetch(`https://pokeapi.co/api/v2/pokemon-species/${id}/`).then(r => r.json()),
         fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`).then(response => response.json())
@@ -169,7 +171,7 @@ function showPokemonCard(species, pokemonInfoData) {
         ${pokemonInfoData.stats.map(pokeStats =>
 
         `<tr><th class ="${text_color}">${statsname(pokeStats.stat.name)}</th><td><label for="">${pokeStats.base_stat}</label></td><td><div class= "progress_wrapper background-${pokemonInfoData.types[0].type.name}-light"  >
-  <div class= "progress_bar background-${pokemonInfoData.types[0].type.name}" style ="width:${pokeStats.base_stat}px"></div>
+  <div class= "progress_bar background-${pokemonInfoData.types[0].type.name}" style ="width:${(pokeStats.base_stat / 230) * 100}%"></div>
 </div></td></tr>`).join(" ")}</table> 
       </section>  
 
@@ -200,3 +202,11 @@ console.log(pokemonInfoData.types[0].type.name);
     <p class ="margin__top">${species}</p> */
 
 getData();
+
+/* onclick = "nextPokemon()" */
+/* function nextPokemon() {
+
+    let temp = parseInt(id, 10) + 1;
+    getData(temp)
+
+} */

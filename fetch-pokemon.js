@@ -1,8 +1,6 @@
-
 let currentOffset = 0;
 let limit = 20;
 const mainDom = document.querySelector(".main-dom");
-
 const artworkUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/"
 
 
@@ -42,7 +40,7 @@ function displayPokemon(data) {
     let observerPokemon = document.querySelector("main a:nth-last-child(5)");
     console.log(observerPokemon);
 
-    observerPokemon.classList.add("red");
+    // observerPokemon.classList.add("red");
     observer.observe(observerPokemon);
 
 }
