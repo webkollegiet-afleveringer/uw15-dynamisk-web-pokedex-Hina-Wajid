@@ -11,3 +11,9 @@ pokemonUrl.match(/\/(\d+)\/?$/)[1];
     pokemonInfoData.types.map((element) => {
         `<li>${element.type.name}</li>`
     })
+
+
+async function init()
+{
+    
+}
