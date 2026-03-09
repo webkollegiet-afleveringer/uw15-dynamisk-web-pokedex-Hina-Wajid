@@ -40,7 +40,7 @@ function displayPokemon(data) {
     let observerPokemon = document.querySelector("main a:nth-last-child(5)");
     console.log(observerPokemon);
 
-    // observerPokemon.classList.add("red");
+    observerPokemon.classList.add("red");
     observer.observe(observerPokemon);
 
 }
