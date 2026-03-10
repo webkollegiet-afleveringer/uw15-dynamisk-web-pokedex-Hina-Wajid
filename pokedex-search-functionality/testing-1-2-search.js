@@ -51,35 +51,23 @@ function displayPokemon(data) {
 }
 
 function searchPokemon(searchDom) {
-    removeEventListener("input", handelSearch)
-    searchDom.addEventListener("input", handelSearch)
-}
-/* function searchPokemon(searchDom) {
-    searchDom.addEventListener("input", handelSearch)
-}
- */
-function handelSearch(event) {
-    const inputValue = event.target.value.toLowerCase();
-    console.log(inputValue);
-    runSearch(inputValue);
+    searchDom.addEventListener("input", (event) => {
+        const inputValue = event.target.value.toLowerCase();
+        runSearch(inputValue);
+    })
 }
 
 function runSearch(inputValue) {
     const value = inputValue.trim();
-    // console.log(value);
-
     if (!value) {
         console.log("search is empty");
         mainDom.innerHTML = "";
         displayPokemon(pokemons);
         return;
     }
-
     let pokemonSearchArray;
     pokemonSearchArray = searchByName(pokemons, value);
-
     console.log(pokemonSearchArray);
-
     displayPokemon(pokemonSearchArray);
 
 }

@@ -1,12 +1,14 @@
 let currentOffset = 0;
-let limit = 1350;
+let limit = 20;
+let unlimit = 1350;
 const mainDom = document.querySelector(".main-dom");
 const artworkUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/"
 
 
 let pokemons = [];
 function fetchpokemon(offset) {
-    fetch(`https://pokeapi.co/api/v2/pokemon/?offset=${offset}&limit=${limit}`)
+    fetch(`https://pokeapi.co/api/v2/pokemon/?offset=${offset}&limit=${unlimit}`)
+        // fetch(`https://pokeapi.co/api/v2/pokemon/?offset=${offset}&limit=${limit}`)
         .then((response) => response.json())
         .then((data) => {
             displayPokemon(data.results);
@@ -47,31 +49,47 @@ function displayPokemon(data) {
     const searchDom = document.querySelector("#search-pokemon");
 
     searchPokemon(searchDom);
+    let observerPokemon = document.querySelector("main a:nth-last-child(5)");
+    console.log(observerPokemon);
 
+    // observerPokemon.classList.add("red");
+    // observer.observe(observerPokemon);
 }
+
+const observer = new IntersectionObserver((enteries) => {
+    enteries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            currentOffset = currentOffset + 20;
+
+            if (currentOffset < 1330) {
+                fetchpokemon(currentOffset);
+
+            }
+            else {
+                console.log("END");
+
+            }
+
+        }
+    })
+}, {
+    threshold: 1
+})
 
 function searchPokemon(searchDom) {
-    removeEventListener("input", handelSearch)
-    searchDom.addEventListener("input", handelSearch)
-}
-/* function searchPokemon(searchDom) {
-    searchDom.addEventListener("input", handelSearch)
-}
- */
-function handelSearch(event) {
-    const inputValue = event.target.value.toLowerCase();
-    console.log(inputValue);
-    runSearch(inputValue);
+    searchDom.addEventListener("input", (event) => {
+        const inputValue = event.target.value.toLowerCase();
+        runSearch(inputValue);
+    })
 }
 
 function runSearch(inputValue) {
     const value = inputValue.trim();
-    // console.log(value);
-
     if (!value) {
         console.log("search is empty");
         mainDom.innerHTML = "";
-        displayPokemon(pokemons);
+        displayPokemon(pokemons)
+
         return;
     }
 
@@ -102,8 +120,6 @@ function searchByName(pokemonsArray, letter) {
     return pokemonsArray.filter((pokemon) =>
         pokemon.name.includes(letter.toLowerCase()));
 }
-
-
 
 fetchpokemon();
 

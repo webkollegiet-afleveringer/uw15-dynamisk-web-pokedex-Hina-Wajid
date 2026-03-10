@@ -1,3 +1,4 @@
+import { letter, number } from "./icons.js"
 let currentOffset = 0;
 let limit = 1350;
 const mainDom = document.querySelector(".main-dom");
@@ -54,10 +55,7 @@ function searchPokemon(searchDom) {
     removeEventListener("input", handelSearch)
     searchDom.addEventListener("input", handelSearch)
 }
-/* function searchPokemon(searchDom) {
-    searchDom.addEventListener("input", handelSearch)
-}
- */
+
 function handelSearch(event) {
     const inputValue = event.target.value.toLowerCase();
     console.log(inputValue);

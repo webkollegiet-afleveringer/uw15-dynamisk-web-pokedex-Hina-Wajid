@@ -1,9 +1,10 @@
+// import { letter, number } from "./icons.js"
 let currentOffset = 0;
 let limit = 1350;
 const mainDom = document.querySelector(".main-dom");
 const artworkUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/"
 
-
+let searchMethod = "name"; // 1
 let pokemons = [];
 function fetchpokemon(offset) {
     fetch(`https://pokeapi.co/api/v2/pokemon/?offset=${offset}&limit=${limit}`)
@@ -38,32 +39,59 @@ function displayPokemon(data) {
               </article>
               
               </a>
-        `
+              `
         })
         .join('');
 
     mainDom.insertAdjacentHTML("beforeend", pokemonString);
 
     const searchDom = document.querySelector("#search-pokemon");
-
+    shiftSearchMethod(searchDom);  //2
     searchPokemon(searchDom);
 
 }
 
+fetchpokemon();
+
+//shift method  //3
+function shiftSearchMethod(searchDom) {
+    const sortButtonDom = document.querySelector(".header__search_button");
+    sortButtonDom.addEventListener("click", () => {
+        //change between search method
+        searchMethod = searchMethod === "name" ? "id" : "name"; //this statement is just like if below
+
+        /*  if (searchMethod == "name") {
+            searchMethod = "id"
+        }
+        else {
+            searchMethod == "name"
+        } */
+
+        shiftSearchIcon(searchMethod, sortButtonDom);
+    });
+}
+
+function shiftSearchIcon() {
+    //vælg søge input elementet og nulstil teksten
+
+}
+
+
+
+
+
+//input 
 function searchPokemon(searchDom) {
     removeEventListener("input", handelSearch)
     searchDom.addEventListener("input", handelSearch)
 }
-/* function searchPokemon(searchDom) {
-    searchDom.addEventListener("input", handelSearch)
-}
- */
+
 function handelSearch(event) {
     const inputValue = event.target.value.toLowerCase();
     console.log(inputValue);
     runSearch(inputValue);
 }
-
+//search 
 function runSearch(inputValue) {
     const value = inputValue.trim();
     // console.log(value);
@@ -105,5 +133,4 @@ function searchByName(pokemonsArray, letter) {
 
 
 
-fetchpokemon();
 
