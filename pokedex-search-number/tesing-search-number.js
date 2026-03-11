@@ -2,19 +2,48 @@ import { tag, letter } from "./icons.js"
 let currentOffset = 0;
 let limit = 1350;
 const mainDom = document.querySelector(".main-dom");
+const wrapper = document.querySelector(".wrapper");
+
 const artworkUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/"
 
-let searchMethod = "name"; // 1
+let searchMethod = "name";
 let pokemons = [];
-function fetchpokemon(offset) {
-    fetch(`https://pokeapi.co/api/v2/pokemon/?offset=${offset}&limit=${limit}`)
+function fetchpokemon() {
+    fetch(`https://pokeapi.co/api/v2/pokemon/?limit=${limit}`)
         .then((response) => response.json())
         .then((data) => {
+            renderHeader(letter);
             displayPokemon(data.results);
             pokemons = data.results;
+            const searchDom = document.querySelector("#search-pokemon");
+            shiftSearchMethod(searchDom);  //last changes 1
+            searchPokemon(searchDom);
+
         })
 }
 
+function renderHeader(searchIcon) {
+    const headerDom = document.querySelector(".header-styling");
+    if (headerDom) {
+        headerDom.remove();
+    }
+    const header = /* html */`
+     <header class="header-styling">
+    <div class="logo-container">
+                <a href="index.html"><img src="./assets/pokeball_white.svg" alt="pokeball"></a>
+                <h1>Pokédex</h1>
+            </div>
+            <form class="search-form" action="#">
+                <div class="search-wrap">
+                    <img src="./assets/search-icon.svg" alt="search-icon" class="search-icon">
+                    <input type="search" name="search-pokemon" id="search-pokemon" placeholder="search">
+                </div>
+                <button type="button" class="header__search_button">${searchIcon}</button>
+            </form>
+    </header>
+    `
+    wrapper.insertAdjacentHTML("afterbegin", header);
+}
 function displayPokemon(data) {
 
     const results = data;
@@ -45,15 +74,12 @@ function displayPokemon(data) {
 
     mainDom.insertAdjacentHTML("beforeend", pokemonString);
 
-    const searchDom = document.querySelector("#search-pokemon");
-    shiftSearchMethod(searchDom);  //2
-    searchPokemon(searchDom);
 
 }
 
 fetchpokemon();
 
-//shift method  //3
+//shift method  //
 function shiftSearchMethod(searchDom) {
     const sortButtonDom = document.querySelector(".header__search_button");
     sortButtonDom.addEventListener("click", () => {
@@ -83,11 +109,11 @@ function shiftSearchIcon(searchMethod, sortButtonDom) {
     //skift søge ikon
     if (searchMethod === "id") {
         sortButtonDom.innerHTML = "";
-        sortButtonDom.innerHTML = "tag";
+        sortButtonDom.innerHTML = tag;
     }
     else {
         sortButtonDom.innerHTML = "";
-        sortButtonDom.innerHTML = "letter";
+        sortButtonDom.innerHTML = letter;
 
     }
 
@@ -129,6 +155,11 @@ function runSearch(inputValue) {
 
     displayPokemon(pokemonSearchArray);
 
+    const searchformDom = document.querySelector(".search-form")
+    searchformDom.addEventListener("submit", (event) => {
+        event.preventDefault()
+    })
+
 }
 
 
@@ -155,11 +186,11 @@ function searchById(pokemonsArray, id) {
     id = Number(id);
     let searchResult = pokemonsArray.filter((pokemon, index) => {
         let pokemonUrlNumber = Number(getIdFromPokemon(pokemon.url))
-        let searchIndex;
-        searchIndex = index + 1;
-        if (pokemonUrlNumber == 10001) {
-            id += 8975;
-        }
+        // let searchIndex;
+        // searchIndex = index + 1;
+        // if (pokemonUrlNumber == 10001) {
+        //     id += 8975;
+        // }
         return pokemonUrlNumber == id;
     })
     return searchResult;
