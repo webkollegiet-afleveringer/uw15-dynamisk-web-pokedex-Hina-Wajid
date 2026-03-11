@@ -1,0 +1,114 @@
+@import url(typography.css);
+@import url(header.css);
+
+.wrapper {
+    border: 1px solid black;
+    margin-inline: auto;
+    /* width: 100%; */
+    width: 680px;
+    background-color: #DC0A2D;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+
+}
+
+.main-dom {
+    background-color: white;
+    padding: 2rem 1rem;
+    margin: 0.5rem;
+    border-radius: 0.5rem;
+    opacity: 100%;
+    box-shadow: 0 3px 12px 3px rgba(0, 0, 0, 0.2) inset;
+}
+
+
+
+.pokemon-card {
+
+    border-radius: 0.5rem;
+    aspect-ratio: 2/1;
+    padding: 1rem;
+    box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+.pokemon-card p {
+    display: flex;
+    justify-content: flex-end;
+    color: #666666;
+    font-weight: 400;
+    font-size: 12px;
+}
+
+.pokemon-card img {
+    /* width: 80%; */
+    height: auto;
+    display: block;
+    aspect-ratio: 74/72;
+    object-fit: contain;
+    margin-inline: auto;
+    position: relative;
+    z-index: 100;
+}
+
+.pokemon-card h2 {
+    text-align: center;
+    font-weight: 400;
+    font-size: 16px;
+    padding: 1rem;
+    width: 100%;
+    position: relative;
+    z-index: 100;
+
+}
+
+.div__background__box {
+    background-color: #8b7f7f;
+    width: 10px;
+    height: 10px;
+
+
+}
+
+.observer {
+    background-color: aqua;
+}
+
+.red {
+    background-color: red;
+}
+
+.first_letter_uppercase {
+    text-transform: capitalize;
+}
+
+.grey-bg {
+    height: 50%;
+    width: 100%;
+    background-color: #EFEFEF;
+    border-radius: 0.5rem;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+}
+
+@media (max-width: 768px) {
+    .wrapper {
+        width: 100%;
+    }
+
+    main {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    main {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,86 @@
+a {
+    text-decoration: none;
+}
+
+a:visited {
+    color: unset;
+}
+
+/* --- Simple CSS Reset --- */
+
+/* 1. Global box-sizing */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* 2. Fjern standard margin og padding på typiske elementer */
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+figure,
+figcaption,
+blockquote {
+    margin: 0;
+    padding: 0;
+}
+
+/* 3. Standard fontindstillinger */
+body {
+    line-height: 1.5;
+
+    -webkit-font-smoothing: antialiased;
+}
+
+/* 4. Fjern listestil */
+ul,
+ol {
+    list-style: none;
+}
+
+/* 5. Fjern standard link-styling */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* 6. Sørg for at billeder ikke sprænger layoutet */
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+/* 7. Formularer */
+input,
+button,
+textarea,
+select {
+    font: inherit;
+    border: none;
+    background: none;
+}
+
+/* 9. Gør det lettere at arbejde med heights */
+html,
+body {
+    height: 100%;
+}
+
+/* 10. Fjern default fokus outline på klik (men bevar med keyboard) */
+:focus:not(:focus-visible) {
+    outline: none;
+}
